@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.M.A. - Smart Omnipresent Mobile Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>S.O.M.A.</span>
+            </div>
+            <div class="status-bar">
+                <div class="status-item" id="language-status">
+                    <i class="fas fa-globe"></i>
+                    <span id="current-language">RU</span>
+                </div>
+                <div class="status-item" id="voice-status">
+                    <i class="fas fa-microphone" id="voice-icon"></i>
+                    <span id="voice-text">Готов</span>
+                </div>
+                <div class="status-item" id="ai-status">
+                    <i class="fas fa-brain"></i>
+                    <span id="ai-agents-count">0 AI</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Interface -->
+        <main class="main-content">
+            <!-- Central AI Interface -->
+            <div class="ai-core">
+                <div class="ai-avatar" id="ai-avatar">
+                    <div class="avatar-inner">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring delayed"></div>
+                </div>
+                <div class="ai-name">S.O.M.A.</div>
+                <div class="ai-subtitle" id="ai-subtitle">Готов к работе</div>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message ai-message">
+                        <div class="message-content">
+                            <i class="fas fa-robot"></i>
+                            <span>Привет! Я S.O.M.A. - ваш умный AI-ассистент. Скажите "SOMA" для голосовой активации или используйте текстовый ввод.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Введите сообщение или скажите 'SOMA'..." autocomplete="off">
+                    <button id="send-btn" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <button id="voice-btn" class="btn btn-voice" title="Голосовой ввод">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn" data-action="create-content">
+                <i class="fas fa-magic"></i>
+                <span data-translate="create_content">Создать контент</span>
+            </button>
+            <button class="action-btn" data-action="smart-home">
+                <i class="fas fa-home"></i>
+                <span data-translate="smart_home">Умный дом</span>
+            </button>
+            <button class="action-btn" data-action="create-ai">
+                <i class="fas fa-plus-circle"></i>
+                <span data-translate="create_ai">Создать AI</span>
+            </button>
+            <button class="action-btn" data-action="data-analysis">
+                <i class="fas fa-chart-line"></i>
+                <span data-translate="data_analysis">Анализ данных</span>
+            </button>
+            <button class="action-btn" data-action="calendar">
+                <i class="fas fa-calendar"></i>
+                <span data-translate="calendar">Календарь</span>
+            </button>
+            <button class="action-btn" data-action="settings">
+                <i class="fas fa-cog"></i>
+                <span data-translate="settings">Настройки</span>
+            </button>
+        </div>
+
+        <!-- Settings Panel -->
+        <div id="settings-panel" class="panel">
+            <div class="panel-header">
+                <h3 data-translate="settings">Настройки</h3>
+                <button class="close-btn" data-panel="settings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="setting-group">
+                    <label data-translate="language">Язык:</label>
+                    <select id="language-select">
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                        <option value="it">Italiano</option>
+                        <option value="az">Azərbaycan</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label data-translate="interface_mode">Режим интерфейса:</label>
+                    <select id="interface-mode">
+                        <option value="voice">Голосовой</option>
+                        <option value="graphical">Графический</option>
+                        <option value="ar">AR (в разработке)</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label data-translate="voice_activation">Голосовая активация:</label>
+                    <input type="checkbox" id="voice-activation" checked>
+                </div>
+                <div class="setting-group">
+                    <label data-translate="auto_learning">Самообучение:</label>
+                    <input type="checkbox" id="auto-learning" checked>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Creation Panel -->
+        <div id="content-panel" class="panel">
+            <div class="panel-header">
+                <h3 data-translate="create_content">Создание контента</h3>
+                <button class="close-btn" data-panel="content">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="content-options">
+                    <button class="content-btn" data-type="text">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Текст</span>
+                    </button>
+                    <button class="content-btn" data-type="website">
+                        <i class="fas fa-globe"></i>
+                        <span>Веб-сайт</span>
+                    </button>
+                    <button class="content-btn" data-type="presentation">
+                        <i class="fas fa-presentation"></i>
+                        <span>Презентация</span>
+                    </button>
+                    <button class="content-btn" data-type="design">
+                        <i class="fas fa-palette"></i>
+                        <span>Дизайн</span>
+                    </button>
+                </div>
+                <div class="content-form">
+                    <textarea id="content-description" placeholder="Опишите, что нужно создать..."></textarea>
+                    <button id="generate-content" class="btn btn-primary">Создать</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Creation Panel -->
+        <div id="ai-panel" class="panel">
+            <div class="panel-header">
+                <h3 data-translate="create_ai">Создание AI</h3>
+                <button class="close-btn" data-panel="ai">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="ai-form">
+                    <input type="text" id="ai-name" placeholder="Имя AI агента">
+                    <textarea id="ai-purpose" placeholder="Описание назначения AI..."></textarea>
+                    <select id="ai-type">
+                        <option value="assistant">Помощник</option>
+                        <option value="analyzer">Аналитик</option>
+                        <option value="creator">Создатель</option>
+                        <option value="manager">Менеджер</option>
+                    </select>
+                    <button id="create-ai" class="btn btn-primary">Создать AI</button>
+                </div>
+                <div class="ai-agents-list" id="ai-agents-list">
+                    <h4>Активные AI агенты:</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Home Panel -->
+        <div id="smart-home-panel" class="panel">
+            <div class="panel-header">
+                <h3 data-translate="smart_home">Умный дом</h3>
+                <button class="close-btn" data-panel="smart-home">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="smart-devices">
+                    <div class="device-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Освещение</span>
+                        <input type="range" min="0" max="100" value="75" class="device-slider">
+                    </div>
+                    <div class="device-card">
+                        <i class="fas fa-thermometer-half"></i>
+                        <span>Температура</span>
+                        <input type="range" min="16" max="30" value="22" class="device-slider">
+                    </div>
+                    <div class="device-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Безопасность</span>
+                        <button class="device-toggle active">ВКЛ</button>
+                    </div>
+                    <div class="device-card">
+                        <i class="fas fa-music"></i>
+                        <span>Музыка</span>
+                        <button class="device-toggle">ВЫКЛ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text">Обрабатываю запрос...</div>
+            </div>
+        </div>
+
+        <!-- Notification Container -->
+        <div id="notifications" class="notifications"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
