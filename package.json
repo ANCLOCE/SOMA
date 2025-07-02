@@ -1,0 +1,66 @@
+{
+  "name": "soma-assistant",
+  "version": "1.0.0",
+  "description": "S.O.M.A. - Smart Omnipresent Mobile Assistant - Саморазвивающийся AI-ассистент с голосовым управлением",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "npx http-server .",
+    "build": "echo 'No build process needed for pure HTML/CSS/JS project'",
+    "test": "echo 'Tests not implemented yet'"
+  },
+  "keywords": [
+    "ai",
+    "assistant",
+    "voice-control",
+    "smart-home",
+    "artificial-intelligence",
+    "web-speech-api",
+    "futuristic-ui",
+    "self-learning",
+    "multi-language",
+    "content-creation"
+  ],
+  "author": "S.O.M.A. Development Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/soma-assistant.git"
+  },
+  "homepage": "https://github.com/your-username/soma-assistant#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/soma-assistant/issues"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "dependencies": {},
+  "technologies": {
+    "frontend": "HTML5, CSS3, JavaScript (ES6+)",
+    "voice": "Web Speech API",
+    "ui": "Custom CSS with glassmorphism effects",
+    "storage": "LocalStorage + IndexedDB",
+    "apis": "REST APIs, WebSocket ready"
+  },
+  "features": [
+    "Voice activation with 'SOMA' keyword",
+    "Multi-language support (Russian, English, Italian, Azerbaijani)",
+    "AI agent creation and management",
+    "Smart home device simulation",
+    "Content creation tools",
+    "Data analysis capabilities",
+    "Self-learning system",
+    "Futuristic glassmorphism UI",
+    "Real-time speech recognition",
+    "Text-to-speech responses"
+  ]
+}
